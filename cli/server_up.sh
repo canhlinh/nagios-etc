@@ -3,7 +3,7 @@
 function print_usage
 {
 	echo "Usage:"
-	echo "    $0 <destination> <bigbluebutton|freeswitch>"
+	echo "    $0 <destination> <emeeting|freeswitch>"
 	exit 1
 }
 
@@ -12,12 +12,12 @@ then
 	print_usage
 fi
 
-if [ $2 != "bigbluebutton" ] && [ $2 != "freeswitch" ]
+if [ $2 != "emeeting" ] && [ $2 != "freeswitch" ]
 then
 	print_usage
 fi
 
-if [ $2 == "bigbluebutton" ]
+if [ $2 == "emeeting" ]
 then
 	HOST=`bbb-conf --salt | grep URL | tr -d ' ' | sed 's/URL://g'`
 	SALT=`bbb-conf --salt | grep Salt | tr -d ' ' | sed 's/Salt://g'`
