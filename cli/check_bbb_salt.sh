@@ -48,9 +48,10 @@ HOST=`cat $FILE_OLD | grep 'URL' | tr -d ' ' | sed 's:URL\:http\://\([^:/]*\).*:
 if [ $UPDATE_MONITOR -eq 1 ]
 then
     echo "Sending notification"
-    ~/tools/nagios-etc/cli/server_up.sh $NAGIOS_ADDRESS bigbluebutton
-    chmod +x ~/tools/installation-scripts/bbb-deploy/start-monitor.sh
-    ~/tools/installation-scripts/bbb-deploy/start-monitor.sh $NAGIOS_ADDRESS $HOST $INTERVAL
+    /usr/local/src/tools/nagios-etc/cli/server_up.sh $NAGIOS_ADDRESS bigbluebutton
+    wget https://raw.github.com/canhlinh/nagios-script/master/start-monitor.sh
+    chmod +x /usr/local/src/tools/installation-scripts/bbb-deploy/start-monitor.sh
+    /usr/local/src/tools/installation-scripts/bbb-deploy/start-monitor.sh $NAGIOS_ADDRESS $HOST $INTERVAL
 else
     echo "Not sending notification"
 fi
